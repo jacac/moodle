@@ -26,27 +26,29 @@ class block_activity_modules extends block_list {
 
         $modinfo = get_fast_modinfo($course);
         $modfullnames = array();
+		$processedmod = array();
 
-        $archetypes = array();
+        
 
         foreach($modinfo->cms as $cm) {
+			//if this modname is already in the list -> continue
+			if (array_key_exists($cm->modname, $processedmod)) {
+				continue;
+			}//if
             // Exclude activities which are not visible or have no link (=label)
             if (!$cm->uservisible or !$cm->has_view()) {
                 continue;
             }
-            if (array_key_exists($cm->modname, $modfullnames)) {
-                continue;
-            }
-            if (!array_key_exists($cm->modname, $archetypes)) {
-                $archetypes[$cm->modname] = plugin_supports('mod', $cm->modname, FEATURE_MOD_ARCHETYPE, MOD_ARCHETYPE_OTHER);
-            }
-            if ($archetypes[$cm->modname] == MOD_ARCHETYPE_RESOURCE) {
+            
+			$archetype = plugin_supports('mod', $cm->modname, FEATURE_MOD_ARCHETYPE, MOD_ARCHETYPE_OTHER);
+            if ($archetype == MOD_ARCHETYPE_RESOURCE) {
                 if (!array_key_exists('resources', $modfullnames)) {
                     $modfullnames['resources'] = get_string('resources');
                 }
             } else {
                 $modfullnames[$cm->modname] = $cm->modplural;
             }
+			$processedmod[$cm->modname] = 1;
         }
 
         core_collator::asort($modfullnames);
