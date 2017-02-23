@@ -1,0 +1,96 @@
+[submodule "blocks/dashboard"]
+	path = blocks/dashboard
+	url = git@git.ds9.ca:lms/block_dashboard.git
+	branch = MOODLE_32_STABLE
+[submodule "blocks/textbook"]
+	path = blocks/textbook
+	url = git@git.ds9.ca:lms/block_textbook.git
+	branch = MOODLE_32_STABLE
+[submodule "blocks/schedule"]
+	path = blocks/schedule
+	url = git@git.ds9.ca:lms/block_schedule.git
+	branch = MOODLE_32_STABLE
+[submodule "blocks/course_dev_status"]
+	path = blocks/course_dev_status
+	url = git@git.ds9.ca:lms/block_course_dev_status.git
+	branch = MOODLE_32_STABLE
+[submodule "blocks/proctored_exam"]
+	path = blocks/proctored_exam
+	url = git@git.ds9.ca:lms/block_proctored_exam.git
+	branch = MOODLE_32_STABLE
+[submodule "external"]
+	path = external
+	url = git@git.ds9.ca:lms/external.git
+	branch = MOODLE_32_STABLE
+[submodule "mod/pagestyle"]
+	path = mod/pagestyle
+	url = git@git.ds9.ca:lms/mod_pagestyle.git
+	branch = MOODLE_32_STABLE
+[submodule "mod/questionnaire"]
+	path = mod/questionnaire
+	url = git@git.ds9.ca:lms/mod_questionnaire.git
+	branch = MOODLE_32_STABLE
+[submodule "question/type/ordering"]
+	path = question/type/ordering
+	url = git@git.ds9.ca:lms/qtype_ordering.git
+	branch = MOODLE_32_STABLE
+[submodule "question/type/ddmatch"]
+	path = question/type/ddmatch
+	url = git@git.ds9.ca:lms/qtype_ddmatch.git
+	branch = MOODLE_32_STABLE
+[submodule "question/type/ddcategories"]
+	path = question/type/ddcategories
+	url = git@git.ds9.ca:lms/qtype_ddcategories.git
+	branch = MOODLE_32_STABLE
+[submodule "question/type/pmatch"]
+	path = question/type/pmatch
+	url = git@git.ds9.ca:lms/qtype_pmatch.git
+	branch = MOODLE_32_STABLE
+[submodule "mod/lti/source/log"]
+	path = mod/lti/source/log
+	url = git@git.ds9.ca:lms/ltisource_log.git
+	branch = MOODLE_32_STABLE
+[submodule "blocks/teacher_online"]
+	path = blocks/teacher_online
+	url = git@git.ds9.ca:lms/block_teacher_online.git
+	branch = MOODLE_32_STABLE
+[submodule "blocks/grading"]
+	path = blocks/grading
+	url = git@git.ds9.ca:lms/block_grading.git
+	branch = MOODLE_32_STABLE
+[submodule "question/type/order"]
+	path = question/type/order
+	url = git@git.ds9.ca:lms/qtype_order.git
+	branch = MOODLE_32_STABLE
+[submodule "filter/coursefiledir"]
+	path = filter/coursefiledir
+	url = git@git.ds9.ca:lms/filter_coursefiledir.git
+	branch = MOODLE_32_STABLE
+[submodule "filter/inlineassignment"]
+	path = filter/inlineassignment
+	url = git@git.ds9.ca:lms/filter_inlineassignment.git
+	branch = MOODLE_32_STABLE
+[submodule "enrol/encom"]
+	path = enrol/encom
+	url = git@git.ds9.ca:lms/enrol_encom.git
+	branch = MOODLE_32_STABLE
+[submodule "auth/activelocked"]
+	path = auth/activelocked
+	url = git@git.ds9.ca:lms/auth_activelocked.git
+	branch = MOODLE_32_STABLE
+[submodule "auth/encom"]
+	path = auth/encom
+	url = git@git.ds9.ca:lms/auth_encom.git
+	branch = MOODLE_32_STABLE
+[submodule "auth/hcosguest"]
+	path = auth/hcosguest
+	url = git@git.ds9.ca:lms/auth_hcosguest.git
+	branch = MOODLE_32_STABLE
+[submodule "availability/condition/schedule"]
+	path = availability/condition/schedule
+	url = git@git.ds9.ca:lms/availability_schedule.git
+	branch = MOODLE_32_STABLE
+[submodule "question/type/hangman"]
+	path = question/type/hangman
+	url = git@git.ds9.ca:lms/qtype_hangman.git
+	branch = MOODLE_32_STABLE
