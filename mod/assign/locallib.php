@@ -5970,6 +5970,9 @@ class assign {
                                                         $uniqueidforuser) {
         global $CFG;
 
+		// Jakob overide hidden emails for teachers.
+		$userfrom->maildisplay = 1;
+
         $info = new stdClass();
         if ($blindmarking) {
             $userfrom = clone($userfrom);
