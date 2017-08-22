@@ -94,3 +94,7 @@
 	path = question/type/hangman
 	url = git@git.ds9.ca:lms/qtype_hangman.git
 	branch = MOODLE_32_STABLE
+[submodule "deploy"]
+	path = deploy
+	url = git@git.ds9.ca:lms/deploy.git
+	branch = master
