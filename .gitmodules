@@ -1,7 +1,3 @@
-[submodule "blocks/dashboard"]
-	path = blocks/dashboard
-	url = git@git.ds9.ca:lms/block_dashboard.git
-	branch = MOODLE_32_STABLE
 [submodule "blocks/textbook"]
 	path = blocks/textbook
 	url = git@git.ds9.ca:lms/block_textbook.git
