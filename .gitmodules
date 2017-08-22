@@ -5,7 +5,7 @@
 [submodule "blocks/schedule"]
 	path = blocks/schedule
 	url = git@git.ds9.ca:lms/block_schedule.git
-	branch = MOODLE_32_STABLE
+	branch = master
 [submodule "blocks/course_dev_status"]
 	path = blocks/course_dev_status
 	url = git@git.ds9.ca:lms/block_course_dev_status.git
