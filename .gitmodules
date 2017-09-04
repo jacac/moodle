@@ -94,3 +94,6 @@
 	path = deploy
 	url = git@git.ds9.ca:lms/deploy.git
 	branch = master
+[submodule "filter/curio"]
+	path = filter/curio
+	url = git@git.ds9.ca:lms/filter_curio.git
