@@ -5841,7 +5841,12 @@ function email_to_user($user, $from, $subject, $messagetext, $messagehtml = '', 
             $fromstring = get_string('emailvia', 'core', $fromdetails);
         }
         $mail->FromName = $fromstring;
-        if (empty($replyto)) {
+        if ($usetrueaddress && empty($replyto) &&
+                ($from->maildisplay == core_user::MAILDISPLAY_EVERYONE
+                || ($from->maildisplay == core_user::MAILDISPLAY_COURSE_MEMBERS_ONLY
+                    && enrol_get_shared_courses($user, $from, false, true)))) {
+            $tempreplyto[] = array($from->email, fullname($from));
+        } else if(empty($replyto)) {
             $tempreplyto[] = array($noreplyaddress, get_string('noreplyname'));
         }
     }
