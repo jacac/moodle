@@ -1565,7 +1565,8 @@ function quiz_send_notification_messages($course, $quiz, $attempt, $context, $cm
     }
 
     $submitter = $DB->get_record('user', array('id' => $attempt->userid), '*', MUST_EXIST);
-
+    // Jakob overide hidden emails for teachers.
+    $submitter->maildisplay = 1;
     // Check for confirmation required.
     $sendconfirm = false;
     $notifyexcludeusers = '';
