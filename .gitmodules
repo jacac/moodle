@@ -97,3 +97,6 @@
 [submodule "filter/curio"]
 	path = filter/curio
 	url = git@git.ds9.ca:lms/filter_curio.git
+[submodule "local/analytics"]
+	path = local/analytics
+	url = git@git.ds9.ca:lms/local_analytics.git
