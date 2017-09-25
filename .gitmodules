@@ -100,3 +100,6 @@
 [submodule "local/analytics"]
 	path = local/analytics
 	url = git@git.ds9.ca:lms/local_analytics.git
+[submodule "lib/editor/atto/plugins/fontsize"]
+	path = lib/editor/atto/plugins/fontsize
+	url = git@git.ds9.ca:lms/atto_fontsize.git
