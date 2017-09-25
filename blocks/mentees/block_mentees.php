@@ -58,7 +58,10 @@ class block_mentees extends block_base {
                                                          AND c.instanceid = u.id
                                                          AND c.contextlevel = ".CONTEXT_USER, array($USER->id))) {
 
-            $this->content->text = '<ul>';
+            $schedulelink = new moodle_url("{$CFG->wwwroot}/blocks/schedule/student_advisor_view.php");
+            $this->content->text = html_writer::link($schedulelink, 'Student Progress Report',
+                    ['class' => 'btn btn-primary btn-block m-b-1']);
+            $this->content->text .= '<ul>';
             foreach ($usercontexts as $usercontext) {
                 $this->content->text .= '<li><a href="'.$CFG->wwwroot.'/user/view.php?id='.$usercontext->instanceid.'&amp;course='.SITEID.'">'.fullname($usercontext).'</a></li>';
             }
