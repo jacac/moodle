@@ -100,5 +100,58 @@ function xmldb_lti_upgrade($oldversion) {
     // Automatically generated Moodle v3.3.0 release upgrade line.
     // Put any upgrade step following this.
 
+    if ($oldversion < 2017111301) {
+
+        // A bug in the LTI plugin incorrectly inserted a grade item for
+        // LTI instances which were set to not allow grading.
+        // The change finds any LTI which does not have grading enabled,
+        // and updates any grades to delete them.
+
+        $ltis = $DB->get_recordset_sql("
+                SELECT
+                    l.id,
+                    l.course,
+                    l.instructorchoiceacceptgrades,
+                    t.enabledcapability,
+                    t.toolproxyid,
+                    tc.value AS acceptgrades
+                FROM
+                    (
+                     {lti} l,
+                     {grade_items} gt
+                    )
+                    LEFT JOIN {lti_types} t ON t.id = l.typeid
+                    LEFT JOIN {lti_types_config} tc ON tc.typeid = t.id AND tc.name = 'acceptgrades'
+                WHERE
+                    gt.itemmodule = 'lti'
+                    AND  gt.itemtype = 'mod'
+                    AND l.id = gt.iteminstance
+        ");
+
+        foreach ($ltis as $lti) {
+            $acceptgrades = true;
+            if (empty($lti->toolproxyid)) {
+                $typeacceptgrades = isset($lti->acceptgrades) ? $lti->acceptgrades : LTI_SETTING_DELEGATE;
+                if (!($typeacceptgrades == LTI_SETTING_ALWAYS ||
+                        ($typeacceptgrades == LTI_SETTING_DELEGATE && $lti->instructorchoiceacceptgrades == LTI_SETTING_ALWAYS))) {
+                    $acceptgrades = false;
+                }
+            } else {
+                $enabledcapabilities = explode("\n", $lti->enabledcapability);
+                $acceptgrades = in_array('Result.autocreate', $enabledcapabilities);
+            }
+
+            if (!$acceptgrades) {
+                return grade_update('mod/lti', $lti->course, 'mod', 'lti', $lti->id, 0, null, array('deleted' => 1));
+            }
+
+        }
+
+        $ltis->close();
+
+        upgrade_mod_savepoint(true, 2017111301, 'lti');
+    }
+
     return true;
+
 }
