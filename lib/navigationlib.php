@@ -1985,6 +1985,8 @@ class global_navigation extends navigation_node {
                 $activity->name = $cm->name;
                 $activity->icon = $cm->icon;
                 $activity->iconcomponent = $cm->iconcomponent;
+                $activity->iconurl = $cm->get_icon_url();
+                $activity->indent = $cm->indent;
                 $activity->hidden = (!$cm->visible);
                 $activity->modname = $cm->modname;
                 $activity->nodetype = navigation_node::NODETYPE_LEAF;
@@ -2118,6 +2120,8 @@ class global_navigation extends navigation_node {
             $activitynode->hidden = $activity->hidden;
             $activitynode->display = $showactivities && $activity->display;
             $activitynode->nodetype = $activity->nodetype;
+            $activitynode->iconurl = $activity->iconurl;
+            $activitynode->indent = $activity->indent;
             $activitynodes[$activity->id] = $activitynode;
         }
 
