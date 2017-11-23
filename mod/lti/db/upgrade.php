@@ -131,9 +131,9 @@ function xmldb_lti_upgrade($oldversion) {
         foreach ($ltis as $lti) {
             $acceptgrades = true;
             if (empty($lti->toolproxyid)) {
-                $typeacceptgrades = isset($lti->acceptgrades) ? $lti->acceptgrades : LTI_SETTING_DELEGATE;
-                if (!($typeacceptgrades == LTI_SETTING_ALWAYS ||
-                        ($typeacceptgrades == LTI_SETTING_DELEGATE && $lti->instructorchoiceacceptgrades == LTI_SETTING_ALWAYS))) {
+                $typeacceptgrades = isset($lti->acceptgrades) ? $lti->acceptgrades : 2;
+                if (!($typeacceptgrades == 1 ||
+                        ($typeacceptgrades == 2 && $lti->instructorchoiceacceptgrades == 1))) {
                     $acceptgrades = false;
                 }
             } else {
@@ -142,7 +142,7 @@ function xmldb_lti_upgrade($oldversion) {
             }
 
             if (!$acceptgrades) {
-                return grade_update('mod/lti', $lti->course, 'mod', 'lti', $lti->id, 0, null, array('deleted' => 1));
+                grade_update('mod/lti', $lti->course, 'mod', 'lti', $lti->id, 0, null, array('deleted' => 1));
             }
 
         }
