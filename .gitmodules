@@ -103,3 +103,6 @@
 [submodule "lib/editor/atto/plugins/fontsize"]
 	path = lib/editor/atto/plugins/fontsize
 	url = git@git.ds9.ca:lms/atto_fontsize.git
+[submodule "theme/arcidillo"]
+	path = theme/arcidillo
+	url = git@git.ds9.ca:lms/theme_arcidillo.git
