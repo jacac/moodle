@@ -1978,6 +1978,10 @@ class global_navigation extends navigation_node {
             }
             foreach ($modinfo->sections[$section->section] as $cmid) {
                 $cm = $modinfo->cms[$cmid];
+                // Remove modules without any urls like label.
+                if ($cm->url == "") {
+                    continue;
+                }
                 $activity = new stdClass;
                 $activity->id = $cm->id;
                 $activity->course = $course->id;
