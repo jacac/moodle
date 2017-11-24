@@ -152,9 +152,7 @@ define(['jquery', 'core/yui', 'core/notification', 'core/templates', 'core/fragm
             str.get_strings([
                 {key: 'changessaved', component: 'core'},
                 {key: 'gradechangessaveddetail', component: 'mod_assign'},
-            ]).done(function(strs) {
-                notification.alert(strs[0], strs[1]);
-            }).fail(notification.exception);
+            ]).fail(notification.exception);
             Y.use('moodle-core-formchangechecker', function() {
                 M.core_formchangechecker.reset_form_dirty_state();
             });
