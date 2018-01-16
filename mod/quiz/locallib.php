@@ -1579,16 +1579,20 @@ function quiz_send_notification_messages($course, $quiz, $attempt, $context, $cm
     $notifyfields = 'u.id, u.username, u.idnumber, u.email, u.emailstop, u.lang,
             u.timezone, u.mailformat, u.maildisplay, u.auth, u.suspended, u.deleted, ';
     $notifyfields .= get_all_user_name_fields(true, 'u');
-    $groups = groups_get_all_groups($course->id, $submitter->id, $cm->groupingid);
-    if (is_array($groups) && count($groups) > 0) {
-        $groups = array_keys($groups);
-    } else if (groups_get_activity_groupmode($cm, $course) != NOGROUPS) {
-        // If the user is not in a group, and the quiz is set to group mode,
-        // then set $groups to a non-existant id so that only users with
-        // 'moodle/site:accessallgroups' get notified.
-        $groups = -1;
-    } else {
+
+    if (groups_get_activity_groupmode($cm, $course) == NOGROUPS) {
         $groups = '';
+    } else {
+        $groups = groups_get_all_groups($course->id, $submitter->id, $cm->groupingid);
+
+        if (is_array($groups) && count($groups) > 0) {
+            $groups = array_keys($groups);
+        } else {
+            // If the user is not in a group, and the quiz is set to group mode,
+            // then set $groups to a non-existant id so that only users with
+            // 'moodle/site:accessallgroups' get notified.
+            $groups = -1;
+        }
     }
     $userstonotify = get_users_by_capability($context, 'mod/quiz:emailnotifysubmission',
             $notifyfields, '', '', '', $groups, $notifyexcludeusers, false, false, true);
